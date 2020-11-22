@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  programming_lang: MyString
+  focus: MyString
+  repo: MyString
+  creator: MyString
+  project_date: MyString
+
+two:
+  title: MyString
+  programming_lang: MyString
+  focus: MyString
+  repo: MyString
+  creator: MyString
+  project_date: MyString
