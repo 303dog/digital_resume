@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_11_22_210416) do
     t.string "focus"
     t.string "repo"
     t.string "creator"
-    t.string "project_date"
+    t.datetime "project_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 2020_11_22_210416) do
   create_table "work_exps", force: :cascade do |t|
     t.string "company"
     t.string "location"
-    t.string "start_date"
-    t.string "end_date"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.string "job_title"
     t.string "job_sum"
     t.datetime "created_at", precision: 6, null: false
