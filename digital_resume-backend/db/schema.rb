@@ -10,14 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_22_210416) do
+ActiveRecord::Schema.define(version: 2020_11_23_234349) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string "username"
+    t.string "fav_lang"
+    t.string "about"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "prog_id"
+    t.integer "exp"
+  end
 
   create_table "programs", force: :cascade do |t|
     t.string "title"
     t.string "programming_lang"
     t.string "focus"
     t.string "repo"
-    t.string "creator"
     t.datetime "project_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
