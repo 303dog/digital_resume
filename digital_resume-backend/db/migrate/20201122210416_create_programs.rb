@@ -6,7 +6,7 @@ class CreatePrograms < ActiveRecord::Migration[6.0]
       t.string :focus
       t.string :repo
       t.string :creator
-      t.string :project_date
+      t.datetime :project_date
 
       t.timestamps
     end

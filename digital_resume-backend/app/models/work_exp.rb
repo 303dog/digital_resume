@@ -1,2 +1,3 @@
 class WorkExp < ApplicationRecord
+    
 end

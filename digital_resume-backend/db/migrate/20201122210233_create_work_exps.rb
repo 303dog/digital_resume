@@ -3,8 +3,8 @@ class CreateWorkExps < ActiveRecord::Migration[6.0]
     create_table :work_exps do |t|
       t.string :company
       t.string :location
-      t.string :start_date
-      t.string :end_date
+      t.datetime :start_date
+      t.datetime :end_date
       t.string :job_title
       t.string :job_sum
 

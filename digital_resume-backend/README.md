@@ -14,19 +14,24 @@ t.string :creator
 t.datetime :project_date
 
 
-create_table work_exp
+create_table work_exp     has_many :attribute
 
 t.string :company
 t.string :location
 t.datetime :dates
 t.string :job_title
-t.string :job_sum
-###t.integer :job_id
+t.string :job_sum 
+#t.integer :work_exp.id
 
 
-create_table skills
+create_table attribute      has_many :work_exp
 
 t.string :hard_skill
 t.string :soft_skill
 t.string :technical_skill
-t.string :attributes
+t.string :traits
+t.integer :attribute.id
+
+
+
+
