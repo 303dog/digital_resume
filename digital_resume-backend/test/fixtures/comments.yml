@@ -3,13 +3,13 @@
 one:
   username: MyString
   fav_lang: MyString
-  exp: MyString
   about: MyString
-  prog_id: MyString
+  program_id: 1
+  experience: 1
 
 two:
   username: MyString
   fav_lang: MyString
-  exp: MyString
   about: MyString
-  prog_id: MyString
+  program_id: 1
+  experience: 1

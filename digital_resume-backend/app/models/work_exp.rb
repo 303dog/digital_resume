@@ -1,3 +1,0 @@
-class WorkExp < ApplicationRecord
-    
-end

@@ -2,16 +2,14 @@
 
 one:
   title: MyString
-  programming_lang: MyString
+  program_lang: MyString
   focus: MyString
   repo: MyString
-  creator: MyString
-  project_date: MyString
+  project_date: 2020-11-30 11:32:46
 
 two:
   title: MyString
-  programming_lang: MyString
+  program_lang: MyString
   focus: MyString
   repo: MyString
-  creator: MyString
-  project_date: MyString
+  project_date: 2020-11-30 11:32:46

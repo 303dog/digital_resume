@@ -21,9 +21,14 @@ t.integer :exp
 t.integer :about
 t.integer :program_id
 
+create_table languages
+
+t.string :prog_id
+t.string :com_id
 
 
 
+=====================================================================
 #create_table work_exp     has_many :attribute
 #
 #t.string :company
