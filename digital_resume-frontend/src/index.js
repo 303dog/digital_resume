@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   function fetchPrograms() {
-    fetch(COM_URL)
+    fetch(PROG_URL)
       .then((res) => res.json())
       .then((data) => renderProgCom(data));
   }
