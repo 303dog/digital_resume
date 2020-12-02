@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
    # end
 
     def create 
-        @comment = Program.program[:id].comments.create(com_params)
+        @comment = Comment.create(com_params)
         render json: @comment
     end
 

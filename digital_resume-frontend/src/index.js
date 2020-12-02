@@ -55,9 +55,9 @@ document.addEventListener("DOMContentLoaded", () => {
     <ul>
     <p><b><em>Your feedback is appreciated. Please use the form below.</em></b></p>
     <form action="" id="new-comment-form">
-      <hidden_field id="" name="program_id" value=${id}></hidden_field>
+      <input type="hidden" id="" name="program_id" value=${id}/>
       <label for="username"></label>
-      <input type="text" name="username" id="" placeholder="Enter your username here..."     size="40">
+      <input type="text" name="username" id="" placeholder="Enter your username here..." size="40">
       <br>
       <label for="experience">Years of programming experience?</label>
       <select id="" name="experience">
@@ -97,31 +97,27 @@ document.addEventListener("DOMContentLoaded", () => {
       experience: event.target.experience.value,
       username: event.target.username.value,
       fav_lang: event.target.fav_lang.value,
+      program_id: event.target.program_id.value
 
     };
     postCom(formData)
   }
 // post commment//
-  function postCom(data) {
+  function postCom(formData) {
     const config = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(formData),
     };
     fetch(COM_URL, config)
       .then(res => res.json())
-      .then(data => console.log(data));
+      .then(formData => render(formData));
   }
   
-//delete func ///
-  document.getElementById("comments").onclick = function() {delCom()};
 
-    function delCom() {
-      document.getElementById("comments")
-    }
 
   
 
