@@ -5,14 +5,15 @@ class CommentsController < ApplicationController
         render json: @comments
     end
 
-   # def show
-   #     com = Comment.find_by(id: params[:id])
-   #     render json: com, except: [:created_at, :updated_at]
-   # end
+    def show
+        com = Comment.find_by(id: params[:id])
+        render json: com, except: [:created_at, :updated_at]
+    end
 
     def create 
         @comment = Comment.create(com_params)
-        render json: @comment
+        @comments.save
+        render json: @comment, except:[:created_at, updated_at]
     end
 
     def destroy

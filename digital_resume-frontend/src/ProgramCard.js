@@ -1,33 +1,20 @@
-class ProgramData {   
+class ProgramCard {   
     static container = document.getElementById('program-div');
 
     constructor(prog){
         this.prog = prog;
         this.render();
-        this.attachEventListener();
-           console.log(this);
-        
-    
-              
+        //this.attachEventListener();
+        console.log(this);
+                      
     }
 
     
     static getPrograms() {
-        api.getAllPrograms().then((data ) => 
-            data.forEach((prog) => new ProgramData(prog)));
-        
-    }
-
-    attachEventListener() {
-        this.item.addEventListener("click", this.handleForm);
-    }
-
-    handleForm = (event) => {
-        if(event.target.className === "toggle-comment"){
-            const progId = event.target.dataset.id
-            new ComForm(progId);
-        };
-    }
+            api.getAllPrograms().then((data) => 
+                data.forEach((prog) => new ProgramCard(prog)));
+       }
+  
 
     render() {
         const item = document.createElement("div");
@@ -38,7 +25,7 @@ class ProgramData {
         this.constructor.container.append(item);
     }
   
-    
+    //renders program data
     renderInnerHTML() {
         const {title, repo, program_lang, focus, id} = this.prog;
         this.item.innerHTML += `
@@ -50,13 +37,27 @@ class ProgramData {
             <p><button class="current-comment" data-id=${id}>View existing feedback </button></p>
             <p><button class="toggle-comment" data-id=${id}>Leave your own</button></p>
             </div>`
+        };
+        
     }
+ 
 
-    commentsHTML(comments) {
-            console.log(this)
-      return comments
-          .map((comment) => `
-            <li data-id="${comment.id}">${comment.about} <p><em>contributor: $//{comment.username}</em></p>,</li> <button onclick="removeCom()" data-id=${comment.id}>Remove</button>`)
-             .join("");
-     }
-}
+    // iterate over comments
+   // commentsHTML() {
+   //   return comment
+   //       .map((comment) => `
+   //         <li data-id="${comment.id}">${comment.about} //<p><em>contributor: ${comment.username}</em></p>`);
+   //     }
+
+  
+//
+ //      
+//
+//
+ //        handleDeleteClick = (event) => {
+ //            if (event.target.className === "remove") {
+ //                const id = this.com.dataset.id;
+ //                api.removeComment(id).then((com) => this.commentsHTML(com)); 
+ //            }
+ //        }  
+     

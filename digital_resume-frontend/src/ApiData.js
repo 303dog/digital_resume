@@ -8,9 +8,22 @@ class ApiData {
 
     getAllComments = () => fetch(`${this.BASE_URL}/comments`).then((res) => res.json());
 
-    removeComById= (id) => fetch(`${this.BASE_URL}/comments/${id}`).then((res) => res.json());
+    removeComment = () => fetch(`${this.BASE_URL}/comments/${id}`, {method: "PATCH"}).then((res) => res.json());
     
 
+
+    createComment =  (data) => {
+        const config = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(data),
+        };
+        return fetch(`${this.BASE_URL}/comments`, config).then((res) => res.json());
+    
+      };
 
 
 }
