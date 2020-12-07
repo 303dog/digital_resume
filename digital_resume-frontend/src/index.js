@@ -6,11 +6,11 @@ const api = new ApiData(`${BASE_URL}`);
 document.addEventListener("DOMContentLoaded", () => {
 
   ProgramCard.getPrograms();
-  new ComForm();
+  ProgramCard.getComments();
   
 
   
-})
+});
 
 
 
