@@ -6,9 +6,9 @@ class ApiData {
 
     getAllPrograms = () => fetch(`${this.BASE_URL}/programs`).then((res) => res.json());
 
-    getAllComments = () => fetch(`${this.BASE_URL}/comments`).then((res) => res.json());
+    
 
-    removeComment = () => fetch(`${this.BASE_URL}/comments/${id}`, {method: "DELETE"}).then((res) => res.json());
+    removeComment = (id) => fetch(`${this.BASE_URL}/comments/${id}`, {method: "DELETE"}).then((res) => res.json());
     
 
 

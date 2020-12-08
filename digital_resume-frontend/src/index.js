@@ -6,10 +6,9 @@ const api = new ApiData(`${BASE_URL}`);
 document.addEventListener("DOMContentLoaded", () => {
 
   ProgramCard.getPrograms();
-  ProgramCard.getComments();
+ 
   
 
-  
 });
 
 

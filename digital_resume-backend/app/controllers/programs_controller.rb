@@ -6,6 +6,20 @@ class ProgramsController < ApplicationController
     end
 
 
+    def create 
+        @program = Program.create(prog_params)
+        @programs.save
+        render json: @program, except:[:created_at, updated_at]
+    end
 
+
+
+
+
+    private
+
+    def prog_params
+        params.require(:programs).permit(:id, :title, :program_lang, :focus, :repo)
+    end
 
 end

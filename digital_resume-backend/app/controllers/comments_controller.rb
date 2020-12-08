@@ -7,8 +7,8 @@ class CommentsController < ApplicationController
 
     def create 
         @comment = Comment.create(com_params)
-        @comments.save
-        render json: @comment, except:[:created_at, updated_at]
+        @comment.save
+        render json: @comments
     end
 
 

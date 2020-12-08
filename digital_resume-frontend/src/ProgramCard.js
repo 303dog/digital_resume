@@ -1,9 +1,10 @@
 class ProgramCard {   
     static container = document.getElementById('comment-container');
+    
 
     constructor(prog){
         this.prog = prog;
-        this.render();
+        this.renderProgram();
         this.attachEventListener();
         console.log(this);
                       
@@ -14,77 +15,69 @@ class ProgramCard {
                 api.getAllPrograms().then((data) => 
                     data.forEach((prog) => new ProgramCard(prog)));
         }
-
-               // gets all comments from api
-      //  static getComments() {
-      //          api.getAllComments().then((data) => 
-      //              data.forEach((prog) => new ProgramCard(prog)));
-      //  }
+    
 
             attachEventListener() {
-                this.item.addEventListener("click", this.handleComClick);
-                this.item.addEventListener("click", this.handleFormClick);
-                this.item.addEventListener("submit", this.handleOnSubmit);
+                this.card.addEventListener("click", this.handleComClick);
+                this.card.addEventListener("click", this.handleFormClick);
             }
         
-   //         deleteEventListener = () => {
-   //             const remove = document.getElementById("comments");
-   //             remove.addEventListener("click", (event) => this.removeComment(event));
-   //         }
-   //         
-   //         removeComment = (event) => {
-   //         if (event.target.className === "remove-btn") {
-   //             const del_id = event.target.parentElement.dataset.id;
-   //             api.removeComent(del_id);
-   //         };
-   //     }
+            deleteEventListener = () => {
+            const comId = document.getElementById(`project-${this.prog.id}-comments`);
+            comId.addEventListener("click", (event) => this.removeCommentClick(event));
+            }
+            
+            removeCommentClick = (event) => {
+            if (event.target.className === "remove-btn") {
+                const id = event.target.parentElement.dataset.id;
+                api.removeComment(id);
+                };
+            }
         
             handleFormClick = (event) => {
                 if (event.target.className === "toggle-comment") {
-                    const id = this.item.dataset.id;
+                    const id = event.target.dataset.id;
                     new ComForm(id);
                 };
             }
-        
+        ///working- comments disply stacked
             handleComClick = (event) => {
                 if(event.target.className === "current-comment") {
-                    const id = this.item.dataset.id;
-                    this.renderComInnerHTML(id);
+                    const container = document.getElementById(`project-${this.prog.id}-comments`)
+                    container.innerHTML = '';
+                    container.innerHTML = this.prog.comments.map((comment) =>  this.renderComInnerHTML(comment)).join("");
+                    this.deleteEventListener();
                 };
             }
         
-            render() {
-                const item = document.createElement("div");
-                item.className = "item";
-                item.dataset.id = this.prog.id;
-                this.item = item;
-                this.renderInnerHTML();
-                this.constructor.container.append(item);
+            renderProgram() {
+                const card = document.createElement("container");
+                card.className = "card";
+                card.dataset.id = this.prog.id
+                this.card = card;
+                this.renderProgInnerHTML();
+                this.constructor.container.append(card);
             }
         
         
-            renderComInnerHTML(id) {
-                const { about, username, experience, fav_lang, program_id} = this.prog;
-                container.innerHTML = "";
-                container.innerHTML += `
+            renderComInnerHTML = (comment) => {
+                const { about, username, experience, fav_lang, id} = comment;
+                return `
                    <div class="comments">
-                   <input type="hidden" id="" name= program_id value=${id}/>
-                   <h4>Project:${program_id} </h4>
                    <h4>About: ${about} </h4>
                    <h5>Username: ${username} </h5>
                    <h5>Language: ${experience} </h5>
                    <h5>Favorite: ${fav_lang} </h5>
-                   <button class="remove-btn"> Remove</button>
-                   </div>`;
-            
-            }
+                   <button class="remove-btn" data-id=${id}> Remove</button>
+                   </div>`
+            };
         
 
             //renders program data
-            renderInnerHTML() {
+            renderProgInnerHTML() {
                 const {title, repo, program_lang, focus, id} = this.prog;
-                this.item.innerHTML = "";
-                this.item.innerHTML += `
+               // this.card.innerHTML = "";
+                this.card.innerHTML += `
                     <div class="pro-data">
                     <h3><em><u>*${title}</u></em></h3>
                     <h5>Code focus: ${focus}</h5>
@@ -92,6 +85,7 @@ class ProgramCard {
                     <a href='${repo}'>GitHub Repository</a>
                     <p><button class="current-comment" data-id=${id}>View existing feedback </button></p>
                     <p><button class="toggle-comment" data-id=${id}>Leave your own</button></p>
+                    <div id="project-${id}-comments"></div>
                     </div>`
             };
 

@@ -1,26 +1,30 @@
 class ComForm {
     static container = document.getElementById('container');
     
-    constructor(){
-        this.render();
+    constructor(id){
+        this.render(id);
+        this.attachEventListener();
         console.log(this);
     }   
  
 
-
+    attachEventListener(){
+      this.form.addEventListener("submit", this.handleOnSubmit)
+    }
 
     handleOnSubmit = (event) => {     
-        event.preventDefault();
-        const {about, username, fav_lang, experience, program_id} = this.prog;
-        const formData = {
-          about: about.value,
-          experience: experience.value,
-          username: username.value,
-          fav_lang: fav_lang.value,
-          program_id: program_id.value,
-       };
-     api.createComment(formData).then((prog) => new ProgramCard(prog));
+      event.preventDefault();
+      const {about, username, fav_lang, experience, program_id} = event.target;
+      const data = {
+        about: about.value,
+        experience: experience.value,
+        username: username.value,
+        fav_lang: fav_lang.value,
+        program_id: program_id.value,
+     };
+    api.createComment(data).then((prog) => this.prog(prog));
     }
+      
 
 
     render() {
@@ -29,21 +33,19 @@ class ComForm {
         form.innerHTML = this.renderInnerHTML();
         this.form = form;
         this.constructor.container.append(form);
-    }  
+    };
 
-  
 
-   /// comment form..  
     renderInnerHTML = (id) => {
-      const container = document.getElementById("container");
+      const container = document.getElementById("form-container");
         container.innerHTML = "";
-        container.innerHTML += `
+        container.innerHTML += 
       
-         <ul>
+         `<ul>
          <p><b><em>Your feedback is appreciated. Please use the form below.</em></b></p>
 
          <form action="" id="new-comment-form">
-           <input type="hidden" id="" name= program_id value=${id}/>
+           <input type="hidden" id="" name="program_id" value=${id}/>
            <label for="username"></label>
            <input type="text" name="username" id="" placeholder="Enter your username here." size="40">
            <br>
@@ -66,8 +68,8 @@ class ComForm {
                <br>
                <input type="submit" value="Share Comment">
                </form> 
-               </ul>`;
-    }
+          </ul>`;
+    };
 
   
   };
