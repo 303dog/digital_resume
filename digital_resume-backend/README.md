@@ -2,52 +2,35 @@
 
 Digital Resume for JS/Rails Mod
 
-Tables:
+Welcome to my "Digital Portfolio"
 
-create_table programs       has_many comments
+It is my hope that this program will be able to display some of my accomplishments in regards
+to programming and using specific programming languages.
 
-t.string :title
-t.string :programming_lang
-t.string :focus
-t.string :repo
-t.string :creator
-t.datetime :project_date
+After forking and cloning "https://github.com/303dog/digital_resume.git" into your local environment
+you will need to CD into $/digital_resume-backend and start the rails server by typing "$/rails s" in
+your terminal. Next, you will need to open the file 'index.html' for the live preview which differs
+depending on your set-up. Note: it may be necessary to run '$/rails db:migrate' followed by 
+'$/rails db:seed' to sync and load data the first time you run this program.
 
-create_table comments       belongs_to program
+On the frontend you will be able to see how I used Javascript to manipulate the DOM and render some past
+projects I built while attending Flatiron School. Under each project title are some details of each
+program including programming languages used and a link to the github repository. Please take some time
+to look over the examples of work I have provided.
 
-t.string :username
-t.string :fav_lang
-t.integer :exp
-t.integer :about
-t.integer :program_id
+After you have had a moment to examine the code and explore the site, please feel free to leave your
+feedback on any given examples. Your feedback is appreciated as I have only just recently started
+programming/coding and look forward to becoming a more accomplished programmer/coder!
 
-create_table languages
+1.  Fork and clone: "https://github.com/303dog/digital_resume.git"
 
-t.string :prog_id
-t.string :com_id
+2.  $cd digital_resume/
 
+3.  digital_resume/ $cd digital_resume-backend/
 
+4.  $bundle install
 
-=====================================================================
-#create_table work_exp     has_many :attribute
-#
-#t.string :company
-#t.string :location
-#t.datetime :dates
-#t.string :job_title
-#t.string :job_sum 
-#
-#
-#
-#create_table attribute      has_many :work_exp
-#
-#t.string :hard_skill
-#t.string :soft_skill
-#t.string :technical_skill
-#t.string :traits
-#t.integer :attribute.id
-#
-#
-#
-#
-#
+5.  $rails db:migrate (optional)
+6.  $rails db:seed (optional)
+7.  $rails s (this starts the server)
+8.  Don't forget to start the HTML live preview. (ususally accomplished by right clicking the 'index.html' file in the frontend directory.)
