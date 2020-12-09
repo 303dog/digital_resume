@@ -8,7 +8,7 @@ class ApiData {
 
     
 
-    removeComment = (id) => fetch(`${this.BASE_URL}/comments/${id}`, {method: "DELETE"}).then((res) => res.json());
+    removeComment = (id) => fetch(`${this.BASE_URL}/comments/${id}`, {method: "DELETE"}).then((res) => res.json()); 
     
 
 

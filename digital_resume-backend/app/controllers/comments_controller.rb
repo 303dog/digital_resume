@@ -7,13 +7,14 @@ class CommentsController < ApplicationController
 
     def create 
         @comment = Comment.create(com_params)
-        @comment.save
-        render json: @comments
+        
+        render json: @comment
     end
 
 
     def destroy
-        render json: Comment.find(params[:id]).destroy
+        @com = Comment.find_by_id(params[:id]).destroy
+        render json: @comments
     end
 
 private

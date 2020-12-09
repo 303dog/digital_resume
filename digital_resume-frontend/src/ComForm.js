@@ -1,51 +1,43 @@
 class ComForm {
-    static container = document.getElementById('container');
-    
-    constructor(id){
-        this.render(id);
-        this.attachEventListener();
-        console.log(this);
-    }   
- 
+  static container = document.getElementById("container");
 
-    attachEventListener(){
-      this.form.addEventListener("submit", this.handleOnSubmit)
-    }
+  constructor(id) {
+    this.program_id = id;
+    this.render();
+    this.attachEventListener();
+    console.log(id);
+  }
 
-    handleOnSubmit = (event) => {     
-      event.preventDefault();
-      const {about, username, fav_lang, experience, program_id} = event.target;
-      const data = {
-        about: about.value,
-        experience: experience.value,
-        username: username.value,
-        fav_lang: fav_lang.value,
-        program_id: program_id.value,
-     };
-    api.createComment(data).then((prog) => this.prog(prog));
-    }
-      
+  attachEventListener() {
+    const form = document.getElementById("new-comment-form");
+    form.addEventListener("submit", this.handleOnSubmit);
+  }
 
+  handleOnSubmit = (event) => {
+    event.preventDefault();
+    const { about, username, fav_lang, experience, program_id } = event.target;
+    const data = {
+      about: about.value,
+      experience: experience.value,
+      username: username.value,
+      fav_lang: fav_lang.value,
 
-    render() {
-        const form = document.createElement("form");
-        form.className = "form";
-        form.innerHTML = this.renderInnerHTML();
-        this.form = form;
-        this.constructor.container.append(form);
+      program_id: program_id.value,
     };
+    api.createComment(data).then(() => {
+      ProgramCard.getPrograms();
+      this.prog.innerHTML = "";
+    });
+  };
 
-
-    renderInnerHTML = (id) => {
-      const container = document.getElementById("form-container");
-        container.innerHTML = "";
-        container.innerHTML += 
-      
-         `<ul>
+  render = () => {
+    const container = document.getElementById("form-container");
+    container.innerHTML = "";
+    container.innerHTML += `<ul>
          <p><b><em>Your feedback is appreciated. Please use the form below.</em></b></p>
 
          <form action="" id="new-comment-form">
-           <input type="hidden" id="" name="program_id" value=${id}/>
+           <input type="hidden" id="" name="program_id" value=${this.program_id}/>
            <label for="username"></label>
            <input type="text" name="username" id="" placeholder="Enter your username here." size="40">
            <br>
@@ -69,7 +61,5 @@ class ComForm {
                <input type="submit" value="Share Comment">
                </form> 
           </ul>`;
-    };
-
-  
   };
+}
