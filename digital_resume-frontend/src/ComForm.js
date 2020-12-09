@@ -1,18 +1,26 @@
 class ComForm {
-  static container = document.getElementById("container");
+  static container = document.getElementById("form-container");
 
   constructor(id) {
     this.program_id = id;
     this.render();
     this.attachEventListener();
-    console.log(id);
   }
 
+  static getComments() {
+    api.getAllComments().then((data) => {
+      ComForm.container.innerHTML = "";
+      data.forEach(() => ProgramCard.getPrograms());
+    });
+  }
+
+  /// eventlistener for 'submit' btn on comment form
   attachEventListener() {
     const form = document.getElementById("new-comment-form");
     form.addEventListener("submit", this.handleOnSubmit);
   }
 
+  /// responds to the 'submit' btn and stores the new comment in the db
   handleOnSubmit = (event) => {
     event.preventDefault();
     const { about, username, fav_lang, experience, program_id } = event.target;
@@ -21,21 +29,18 @@ class ComForm {
       experience: experience.value,
       username: username.value,
       fav_lang: fav_lang.value,
-
       program_id: program_id.value,
     };
-    api.createComment(data).then(() => {
-      ProgramCard.getPrograms();
-      this.prog.innerHTML = "";
+    api.createComment(data).then(() => {     //creates new comment via api
+      ComForm.getComments();                ///clears and resets page after comment is stored
     });
   };
 
+  /// comment form
   render = () => {
-    const container = document.getElementById("form-container");
-    container.innerHTML = "";
-    container.innerHTML += `<ul>
-         <p><b><em>Your feedback is appreciated. Please use the form below.</em></b></p>
-
+    ComForm.container.innerHTML = "";
+    ComForm.container.innerHTML += `<ul>
+         <p><h3><b><em>Your feedback is appreciated. Please use this form.</em></b></h3></p>
          <form action="" id="new-comment-form">
            <input type="hidden" id="" name="program_id" value=${this.program_id}/>
            <label for="username"></label>
@@ -62,4 +67,5 @@ class ComForm {
                </form> 
           </ul>`;
   };
+  
 }

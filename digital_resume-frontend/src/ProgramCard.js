@@ -5,7 +5,6 @@ class ProgramCard {
     this.prog = prog;
     this.renderProgram();
     this.attachEventListener();
-    console.log(this);
   }
 
   static getPrograms() {
@@ -15,34 +14,29 @@ class ProgramCard {
     });
   }
 
+  /// eventlistener for "new comments" and "exsisting comments" btns
   attachEventListener() {
-    this.card.addEventListener("click", this.handleComClick);
-    this.card.addEventListener("click", this.handleFormClick);
+    this.card.addEventListener("click", this.handleOnClick);
   }
 
+  /// eventlistener for "remove" btn
   deleteEventListener = () => {
     const comId = document.getElementById(`project-${this.prog.id}-comments`);
     comId.addEventListener("click", (event) => this.removeCommentClick(event));
   };
-  /// delete is working but not refreshing page
+
+  /// delete comments
   removeCommentClick = (event) => {
     if (event.target.className === "remove-btn") {
       const id = event.target.parentElement.lastElementChild.dataset.id;
       api.removeComment(id).then(() => {
-        this.getPrograms;
-        this.renderComInnerHTML.innerHTML = "";
+        ProgramCard.getPrograms();
       });
     }
   };
 
-  handleFormClick = (event) => {
-    if (event.target.className === "toggle-comment") {
-      const id = event.target.dataset.id;
-      new ComForm(id);
-    }
-  };
-  ///working- comments disply stacked
-  handleComClick = (event) => {
+  /// handles eventlistener between "new comments" and "exsisting comments" btns
+  handleOnClick = (event) => {
     if (event.target.className === "current-comment") {
       const container = document.getElementById(
         `project-${this.prog.id}-comments`
@@ -53,17 +47,20 @@ class ProgramCard {
         .join("");
       this.deleteEventListener(event);
     }
+    if (event.target.className === "toggle-comment") {
+      const id = event.target.dataset.id;
+      new ComForm(id);
+    }
   };
 
   renderProgram() {
     const card = document.createElement("container");
-    card.className = "card";
-    card.dataset.id = this.prog.id;
     this.card = card;
     this.renderProgInnerHTML();
     this.constructor.container.append(card);
   }
 
+  /// renders comments of corresponding prjects
   renderComInnerHTML = (comment) => {
     const { about, username, experience, fav_lang, id } = comment;
     return `
@@ -76,10 +73,9 @@ class ProgramCard {
                    </div>`;
   };
 
-  //renders program data
+  ///renders program data including comment btns and a div to contain corresponding comments for easier access
   renderProgInnerHTML() {
     const { title, repo, program_lang, focus, id } = this.prog;
-    // this.card.innerHTML = "";
     this.card.innerHTML += `
                     <div class="pro-data">
                     <h3><em><u>*${title}</u></em></h3>

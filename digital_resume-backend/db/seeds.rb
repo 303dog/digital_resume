@@ -10,8 +10,3 @@ Comment.create(username:"Blitz123",fav_lang:"Ruby", experience: 1, about:"it's g
 Comment.create(username:"Slowroll12",fav_lang:"JS", experience: 16, about:"could use some cleanup!",program_id: 3)
 Comment.create(username:"Slowroll12",fav_lang:"JS", experience: 16, about:"it needs help!",program_id: 4)
 
-#WorkExp.create(company:"J.Alexanders" , location: "CO, FL" ,start_date: "2006-8-15" , #end_date:"2013-5-15" ,job_title: "Manager", job_sum: "Customer relations, vendor #coordinator, daily performance and execution, " )
-#WorkExp.create(company: "Cheesecake Factory" , location: "AZ, CO" ,start_date:"2015-04-15" , #end_date:"2017-04-15" ,job_title:"Manager" , job_sum:"Customer and staff relations, high #volume performance evaluations, trouble shooting" )
-#WorkExp.create(company: "Yard House", location:"CO, AZ" ,start_date:"2017-04-15" , #end_date:"2020-06-15" ,job_title:"Manager" , job_sum:"Manage front and back of house staff, #customer relations, security" )
-
-#Attribute.create(hard_skill:"",soft_skill:"",technical_skill:"",attribute:"")
