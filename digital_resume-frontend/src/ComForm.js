@@ -6,7 +6,7 @@ class ComForm {
     this.render();
     this.attachEventListener();
   }
-
+  /// mainp the promise data form API
   static getComments() {
     api.getAllComments().then((data) => {
       ComForm.container.innerHTML = "";
@@ -23,17 +23,20 @@ class ComForm {
   /// responds to the 'submit' btn and stores the new comment in the db
   handleOnSubmit = (event) => {
     event.preventDefault();
-    const { about, username, fav_lang, experience, program_id } = event.target;
+    const { about, username, fav_lang, experience, program_id } = event.target; ///variable
     const data = {
+      //variable
       about: about.value,
       experience: experience.value,
       username: username.value,
       fav_lang: fav_lang.value,
       program_id: program_id.value,
     };
-    api.createComment(data).then(() => {     //creates new comment via api
-      ComForm.getComments();                ///clears and resets page after comment is stored
+    api.createComment(data).then(() => {
+      //creates new comment via api
+      ComForm.getComments(); ///clears and resets page after comment is stored
     });
+    
   };
 
   /// comment form
@@ -67,5 +70,4 @@ class ComForm {
                </form> 
           </ul>`;
   };
-  
 }

@@ -1,11 +1,19 @@
 class ProgramCard {
   static container = document.getElementById("comment-container");
-
+  comQty = document.getElementsByClassName("sort")[0];
+  //cArray = [];
+  
+  
   constructor(prog) {
     this.prog = prog;
     this.renderProgram();
     this.attachEventListener();
+    this.attachSortListener();
+    //console.log(this.prog.comments.length)
+  
   }
+  
+  
 
   static getPrograms() {
     api.getAllPrograms().then((data) => {
@@ -14,9 +22,18 @@ class ProgramCard {
     });
   }
 
+  storeComments() {
+    let cArray = [];
+    {(this.prog.comments.split(" , ")).push} cArray
+  }
+
   /// eventlistener for "new comments" and "exsisting comments" btns
   attachEventListener() {
     this.card.addEventListener("click", this.handleOnClick);
+  }
+
+  attachSortListener() {
+    this.comQty.addEventListener("click", this.sortByCommentClick);
   }
 
   /// eventlistener for "remove" btn
@@ -53,6 +70,17 @@ class ProgramCard {
     }
   };
 
+  sortByCommentClick = (event) => {
+    if (event.target.className === "sort") {
+      const cArray = this.prog.comments;
+      cArray.sort(function (x, y){
+        return x.index - y.index;
+      });
+      console.table(cArray)
+      
+    };
+  }
+
   renderProgram() {
     const card = document.createElement("container");
     this.card = card;
@@ -72,6 +100,7 @@ class ProgramCard {
                    <button class="remove-btn" data-id=${id}> Remove</button>
                    </div>`;
   };
+
 
   ///renders program data including comment btns and a div to contain corresponding comments for easier access
   renderProgInnerHTML() {

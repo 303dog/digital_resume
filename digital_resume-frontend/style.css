@@ -1,24 +1,20 @@
 body {
   background-color: white;
   text-align: center;
-  
- 
 }
-
 
 ul {
-    background-color: rgb(177, 210, 241);
-    text-align: center;
-    border: 2px solid black;
+  background-color: rgb(177, 210, 241);
+  text-align: center;
+  border: 2px solid black;
 }
 
-
 div.comments {
-    border: 1px solid red;
-    background-color: rgb(185, 223, 245);
-    padding-top: 40px;
-    padding-right: 40px;
-    padding-bottom: 40px;
-    padding-left: 40px;
-    text-align: center;
-  }
+  border: 1px solid red;
+  background-color: rgb(185, 223, 245);
+  padding-top: 40px;
+  padding-right: 40px;
+  padding-bottom: 40px;
+  padding-left: 40px;
+  text-align: center;
+}
