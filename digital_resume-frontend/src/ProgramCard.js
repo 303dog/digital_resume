@@ -4,16 +4,18 @@ class ProgramCard {
   //cArray = [];
   
   
+  
   constructor(prog) {
     this.prog = prog;
     this.renderProgram();
     this.attachEventListener();
     this.attachSortListener();
-    //console.log(this.prog.comments.length)
+   // this.cArray.push(this.prog);
+   // console.log(this.cArray);
+   // console.log(this.prog.comments.length);
+   // this.storeComments();
   
   }
-  
-  
 
   static getPrograms() {
     api.getAllPrograms().then((data) => {
@@ -22,10 +24,42 @@ class ProgramCard {
     });
   }
 
-  storeComments() {
-    let cArray = [];
-    {(this.prog.comments.split(" , ")).push} cArray
+ sortByCommentClick = (event) => {
+    if (event.target.className === "sort") {
+      let cArray = this.prog.comments;
+      cArray.sort(function(a, b){return a.comments - b.comments})
+      console.log(cArray)
+
+    }
   }
+
+
+  //sortByCommentClick = (event) => {
+  //  if (event.target.className === "sort") {
+  //    const cArray = this.prog.comments;
+  //    cArray.sort(function (x, y){
+  //      return x.index - y.index;
+  //    });
+  //    console.table(cArray)
+  //    
+  //  };
+  //}
+
+ // sortByCommentClick = (event) => {
+ //   if (event.target.className === "sort")
+ //   api.getAllPrograms().then((data) => {
+ //     data.sort(function(a, b){return a-b});
+ //     this.renderComInnerHTML();
+ //   })
+ // }
+
+  //storeComments() {
+  //  let cArray = [];
+  //  cArray.push(this.prog.comments);
+  // cArray.sort();
+  //};
+  
+
 
   /// eventlistener for "new comments" and "exsisting comments" btns
   attachEventListener() {
@@ -70,16 +104,6 @@ class ProgramCard {
     }
   };
 
-  sortByCommentClick = (event) => {
-    if (event.target.className === "sort") {
-      const cArray = this.prog.comments;
-      cArray.sort(function (x, y){
-        return x.index - y.index;
-      });
-      console.table(cArray)
-      
-    };
-  }
 
   renderProgram() {
     const card = document.createElement("container");
