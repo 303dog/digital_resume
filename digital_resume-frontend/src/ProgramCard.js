@@ -2,15 +2,12 @@ class ProgramCard {
   static container = document.getElementById("comment-container");
   static sortBtn = document.querySelector(".sort");
   static allArray = [];
-  
-  
-  
+
   constructor(prog) {
     this.prog = prog;
     this.renderProgram();
     this.attachEventListener();
     ProgramCard.allArray.push(this);
-  
   }
 
   static getPrograms() {
@@ -22,28 +19,17 @@ class ProgramCard {
 
   static sortByCommentClick = (event) => {
     if (event.target.className === "sort") {
-    let sorted = this.allArray.sort(function(a, b) {
-      return a.ProgramCard.allArray[0].prog.comments > b.ProgramCard.allArray[0].prog.comments;
-    });
-    console.log(sorted)
-    this.sortedProgInnerHTML;
-    }
+      const sorted1 = ProgramCard.allArray;
+      sorted1.sort(function (a, b) {
+        return b.prog.comments.length - a.prog.comments.length;
+      });
+    this.container.innerHTML = "";
+    sorted1.forEach(function(card) {
+    card.renderProgram()
+    })
+   }
     }
 
-  sortedProgInnerHTML() {
-    const { title, repo, program_lang, focus, id } = this.prog;
-    this.card.innerHTML += `
-                    <div class="pro-data">
-                    <h3><em><u>*${title}</u></em></h3>
-                    <h5>Code focus: ${focus}</h5>
-                    <h5>Language used:${program_lang}</h5>
-                    <a href='${repo}'>GitHub Repository</a>
-                    <p><button class="current-comment" data-id={id}>View existing feedback </button></p>
-                    <p><button class="toggle-comment" data-id={id}>Leave your own</button></p>
-                    <div id="project-${id}-comments"></div>
-                    </div>`;
-    };
-  
   /// eventlistener for "new comments" and "exsisting comments" btns
   attachEventListener() {
     this.card.addEventListener("click", this.handleOnClick);
@@ -87,7 +73,6 @@ class ProgramCard {
     }
   };
 
-
   renderProgram() {
     const card = document.createElement("container");
     this.card = card;
@@ -108,10 +93,10 @@ class ProgramCard {
                    </div>`;
   };
 
-
   ///renders program data including comment btns and a div to contain corresponding comments for easier access
   renderProgInnerHTML() {
-    const { title, repo, program_lang, focus, id } = this.prog;
+    let { title, repo, program_lang, focus, id } = this.prog;
+    this.card.innerHTML = "";
     this.card.innerHTML += `
                     <div class="pro-data">
                     <h3><em><u>*${title}</u></em></h3>
