@@ -7,7 +7,7 @@ class ProgramCard {
     this.prog = prog;
     this.renderProgram();
     this.attachEventListener();
-    ProgramCard.allArray.push(this);
+    ProgramCard.allArray.push(this); 
   }
 
   static getPrograms() {
@@ -17,26 +17,26 @@ class ProgramCard {
     });
   }
 
-  static sortByCommentClick = (event) => {
-    if (event.target.className === "sort") {
-      const sorted1 = ProgramCard.allArray;
-      sorted1.sort(function (a, b) {
-        return b.prog.comments.length - a.prog.comments.length;
-      });
-    this.container.innerHTML = "";
-    sorted1.forEach(function(card) {
-    card.renderProgram()
-    })
-   }
-    }
+  //static sortByCommentClick = (event) => {
+  //  if (event.target.className === "sort") {
+  //    const sorted1 = ProgramCard.allArray;
+  //    sorted1.sort(function (a, b) {
+  //      return b.prog.comments.length - a.prog.comments.length;
+  //    }); 
+  //  this.container.innerHTML = ''; 
+  //  sorted1.forEach(function(programcard) { 
+  //  programcard.renderProgram();
+  //  });
+  // };
+  //  }  
 
   /// eventlistener for "new comments" and "exsisting comments" btns
-  attachEventListener() {
+  attachEventListener() { 
     this.card.addEventListener("click", this.handleOnClick);
   }
 
   static attachSortListener() {
-    this.sortBtn.addEventListener("click", this.sortByCommentClick);
+    this.sortBtn.addEventListener("click", this.sortByCommentClick);  
   }
 
   /// eventlistener for "remove" btn
@@ -50,10 +50,11 @@ class ProgramCard {
     if (event.target.className === "remove-btn") {
       const id = event.target.parentElement.lastElementChild.dataset.id;
       api.removeComment(id).then(() => {
+        alert("You are abour to delete a comment!");
         ProgramCard.getPrograms();
       });
     }
-  };
+  }; 
 
   /// handles eventlistener between "new comments" and "exsisting comments" btns
   handleOnClick = (event) => {
@@ -62,7 +63,7 @@ class ProgramCard {
         `project-${this.prog.id}-comments`
       );
       container.innerHTML = "";
-      container.innerHTML = this.prog.comments
+      container.innerHTML = this.prog.comments 
         .map((comment) => this.renderComInnerHTML(comment))
         .join("");
       this.deleteEventListener(event);
