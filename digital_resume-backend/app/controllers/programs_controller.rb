@@ -2,7 +2,7 @@ class ProgramsController < ApplicationController
 
     def index 
         @programs = Program.all
-        render json: @programs, only: [:id, :title, :focus, :repo, :program_lang, :demo], include: :comments
+        render json: @programs, only: [:id, :title, :focus, :about, :repo, :program_lang, :demo], include: :comments
     end
 
     def show
@@ -19,7 +19,7 @@ class ProgramsController < ApplicationController
     private
 
     def prog_params
-        params.require(:programs).permit(:id, :title, :program_lang, :focus, :repo, :demo)
+        params.require(:programs).permit(:id, :title, :program_lang, :focus, :repo, :demo, :about)
     end
 
 end
