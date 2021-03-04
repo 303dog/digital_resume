@@ -98,16 +98,17 @@ class ProgramCard {
 
   ///renders program data including comment btns and a div to contain corresponding comments for easier access
   renderProgInnerHTML() {
-    let { title, repo, demo, program_lang, focus, id } = this.prog;
+    let { title, repo, demo, about, program_lang, focus, id } = this.prog;
     this.card.innerHTML = "";
     this.card.innerHTML += `
                     <div class="pro-data">
-                    <h3><em><u>*${title}</u></em></h3>
+                    <h3><u>${title}</u></h3>
+                    <h4><em>${about}</em></h4>
                     <div class="stats">
-                    <h5>Code focus: ${focus}</h5>
-                    <h5>Library|Framework: ${program_lang}</h5>
+                    <h5>Code focus: <em>${focus}</em></h5>
+                    <h5>Library|Framework: <em>${program_lang}</em></h5>
                     <a href='${demo}'>Demo</a>
-                    <br>
+                    <p></p>
                     <a href='${repo}'>GitHub Repository</a>
                     <p><button class="current-comment" data-id=${id}>View existing feedback </button></p>
                     <p><button class="toggle-comment" data-id=${id}>Leave your own</button></p>
