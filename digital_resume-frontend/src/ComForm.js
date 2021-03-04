@@ -43,13 +43,14 @@ class ComForm {
   render = () => {
     ComForm.container.innerHTML = "";
     ComForm.container.innerHTML += `<ul>
-         <p><h3><b><em>Your feedback is appreciated. Please use this form.</em></b></h3></p>
-         <form action="" id="new-comment-form">
+        <div class="feedback">
+        <p><h3><b><em>Your feedback is appreciated. Please use this form.</em></b></h3></p>
+        <form action="" id="new-comment-form">
            <input type="hidden" id="" name="program_id" value=${this.program_id}/>
            <label for="username"></label>
            <input type="text" name="username" id="" placeholder="Enter your username here." size="40">
            <br>
-           <label for="experience">Years of programming experience?</label>
+           <label for="experience">Years of experience?</label>
            <select id="" name="experience">
              <option></option>
              <option value="1">-1</option>
@@ -67,7 +68,8 @@ class ComForm {
            <textarea type="text" name="about" id="" placeholder="Leave your comment here. "rows="4"cols="50" ></textarea>
                <br>
                <input type="submit" value="Share Comment">
-               </form> 
+               </form>
+               </div> 
           </ul>`;
   };
 }
