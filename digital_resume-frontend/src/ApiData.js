@@ -5,7 +5,7 @@ class ApiData {
   }
   /// GET returns a promise to be manip in other class
   getAllPrograms = () =>
-    fetch(`${this.BASE_URL}/programs`).then((res) => res.json());
+    fetch(`${this.BASE_URL}/programs`).then((res) => res.json());  
 
   getAllComments = () =>
     fetch(`${this.BASE_URL}/comments`).then((res) => res.json());
@@ -28,6 +28,19 @@ class ApiData {
     return fetch(`${this.BASE_URL}/comments`, config)
     .then((res) => res.json())
     
+    };
+
+    addToResume = (data) => {
+      const submitted = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(data),
+      };
+      return fetch(`${this.BASE_URL}/programs`, submitted)
+      .then((res) => res.json())
     };
     
   }
