@@ -15,6 +15,16 @@ class ProgramsController < ApplicationController
         render json: @program, except:[:created_at, :updated_at]
     end
 
+    def update 
+        @program = Program.find_by_id(params[:id]).update
+        render json: @program
+    end
+
+    def destroy
+        @program = Program.find_by_id(prams[:id]).destroy
+        render json: @programs
+    end
+
 
     private
 
