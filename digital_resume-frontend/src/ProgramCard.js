@@ -108,11 +108,12 @@ class ProgramCard {
                     <div class="stats">
                     <h5>Code focus: <em>${focus}</em></h5>
                     <h5>Library|Framework: <em>${program_lang}</em></h5>
-                    <a href='${demo}'>Demo</a>
+                    <a onclick="window.open('${demo}', '_blank', 'location=yes,height=400,width=520,status=yes');">Demo Video</a>
                     <p></p>
-                    <a href='${repo}'>GitHub Repository</a>
+                    <a onclick="window.open('${repo}', '_blank', 'location=yes,height=400,width=520,status=yes');">GitHub Repository</a>
                     <p><button class="current-comment" data-id=${id}>View existing feedback </button></p>
-                    <p><button class="toggle-comment" data-id=${id}>Leave your own</button></p>
+                    <p><button class="toggle-comment" data-id=${id}>Leave Feedback</button></p>
+                    <p><button class="program-update" data-id=${id}>update</button></p>
                     <div id="project-${id}-comments"></div>
                     </div>
                     </div>`;

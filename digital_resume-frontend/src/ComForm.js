@@ -48,7 +48,7 @@ class ComForm {
         <form action="" id="new-comment-form">
            <input type="hidden" id="" name="program_id" value=${this.program_id}/>
            <label for="username"></label>
-           <input type="text" name="username" id="" placeholder="Enter your username here." size="40">
+           <input type="text" name="username" id="" placeholder="name/company." size="40">
            <br>
            <label for="experience">Years of experience?</label>
            <select id="" name="experience">
@@ -62,10 +62,10 @@ class ComForm {
            </select>
            <br>
            <label for="fav_lang" id=""></label>
-           <input type="text" name="fav_lang" placeholder="Perferred language to code..."size="40">
+           <input type="text" name="fav_lang" placeholder="expertise..."size="40">
            <br>
            <label for="about"></label>
-           <textarea type="text" name="about" id="" placeholder="Leave your comment here. "rows="4"cols="50" ></textarea>
+           <textarea type="text" name="about" id="" placeholder="feedback... "rows="4"cols="50" ></textarea>
                <br>
                <input type="submit" value="Share Comment">
                </form>

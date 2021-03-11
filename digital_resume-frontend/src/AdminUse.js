@@ -9,7 +9,6 @@ class AdminUse {
         this.attachEventListener();
       }
 
-
       attachEventListener() {
         const adminForm = document.getElementById("new-program-form");
         adminForm.addEventListener("submit", this.handleOnSubmit);

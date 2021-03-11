@@ -9,6 +9,11 @@ ul {
   border: 3px solid rgb(252, 251, 251);
 }
 
+a:hover {
+  background-color: rgb(60, 255, 0);
+  text-decoration: underline overline;
+}
+
 div.comments {
   border: 5px solid white;
   background-color: rgb(218, 252, 218);
