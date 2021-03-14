@@ -7,6 +7,19 @@ class ApiData {
   getAllPrograms = () =>
     fetch(`${this.BASE_URL}/programs`).then((res) => res.json());  
 
+  updateProgram = (data) => {
+    const revise = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    return fetch(`${this.BASE_URL}`, revise)
+    .then((res) => res.json())
+  };
+
   getAllComments = () =>
     fetch(`${this.BASE_URL}/comments`).then((res) => res.json());
 

@@ -1,6 +1,5 @@
 class ProgramCard {
   static container = document.getElementById("comment-container");
-  static sortBtn = document.querySelector(".sort");
   static allArray = [];
 
   constructor(prog) {
@@ -35,10 +34,6 @@ class ProgramCard {
     this.card.addEventListener("click", this.handleOnClick);
   }
 
-  static attachSortListener() {
-    this.sortBtn.addEventListener("click", this.sortByCommentClick);  
-  }
-
   /// eventlistener for "remove" btn
   deleteEventListener = () => {
     const comId = document.getElementById(`project-${this.prog.id}-comments`);
@@ -66,8 +61,7 @@ class ProgramCard {
       container.innerHTML = this.prog.comments 
         .map((comment) => this.renderComInnerHTML(comment))
         .join("");
-        
-      this.deleteEventListener(event);
+        this.deleteEventListener(event);
     }
     if (event.target.className === "toggle-comment") {
       const id = event.target.dataset.id;
@@ -101,21 +95,19 @@ class ProgramCard {
     let { title, repo, demo, about, program_lang, focus, id } = this.prog;
     this.card.innerHTML = "";
     this.card.innerHTML += `
-    
-                    <div class="pro-data">
-                    <h3><u>${title}</u></h3>
-                    <h4><em>${about}</em></h4>
-                    <div class="stats">
-                    <h5>Code focus: <em>${focus}</em></h5>
-                    <h5>Library|Framework: <em>${program_lang}</em></h5>
-                    <a onclick="window.open('${demo}', '_blank', 'location=yes,height=400,width=520,status=yes');">Demo Video</a>
-                    <p></p>
-                    <a onclick="window.open('${repo}', '_blank', 'location=yes,height=400,width=520,status=yes');">GitHub Repository</a>
-                    <p><button class="current-comment" data-id=${id}>View existing feedback </button></p>
-                    <p><button class="toggle-comment" data-id=${id}>Leave Feedback</button></p>
-                    <p><button class="program-update" data-id=${id}>update</button></p>
-                    <div id="project-${id}-comments"></div>
-                    </div>
-                    </div>`;
+          <div class="pro-data">
+          <h3><u>${title}</u></h3>
+          <h4><em>${about}</em></h4>
+          <div class="stats">
+          <h5>Code focus: <em>${focus}</em></h5>
+          <h5>Library|Framework: <em>${program_lang}</em></h5>
+          <a onclick="window.open('${demo}', '_blank', 'location=yes,height=400,width=520,status=yes');">Demo Video</a>
+          <p></p>
+          <a onclick="window.open('${repo}', '_blank', 'location=yes,height=400,width=520,status=yes');">GitHub Repository</a>
+          <p><button class="current-comment" data-id=${id}>View existing feedback </button></p>
+          <p><button class="toggle-comment" data-id=${id}>Leave Feedback</button></p>
+          <div id="project-${id}-comments"></div>
+          </div>
+          </div>`;
   }
 }
