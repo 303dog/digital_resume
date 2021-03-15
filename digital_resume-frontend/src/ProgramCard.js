@@ -62,12 +62,12 @@ class ProgramCard {
         .map((comment) => this.renderComInnerHTML(comment))
         .join("");
         this.deleteEventListener(event);
-    }
-    if (event.target.className === "toggle-comment") {
-      const id = event.target.dataset.id;
-      confirm("Scroll up to complete the comment form.");
-      new ComForm(id);
-    }
+      }
+      if (event.target.className === "toggle-comment") {
+        const id = event.target.dataset.id;
+        confirm("Scroll up to complete the comment form.");
+        new ComForm(id);
+      }
   };
 
   renderProgram() {
