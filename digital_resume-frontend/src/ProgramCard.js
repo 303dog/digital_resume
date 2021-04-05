@@ -100,7 +100,7 @@ class ProgramCard {
           <h4><em>${about}</em></h4>
           <div class="stats">
           <h5>Code focus: <em>${focus}</em></h5>
-          <h5>Library|Framework: <em>${program_lang}</em></h5>
+          <h5>Library | Framework: <em>${program_lang}</em></h5>
           <a onclick="window.open('${demo}', '_blank', 'location=yes,height=400,width=520,status=yes');">Demo Video</a>
           <p></p>
           <a onclick="window.open('${repo}', '_blank', 'location=yes,height=400,width=520,status=yes');">GitHub Repository</a>

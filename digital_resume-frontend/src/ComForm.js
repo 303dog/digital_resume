@@ -58,11 +58,11 @@ class ComForm {
              <option value="3">3</option>
              <option value="4">4</option>
              <option value="5">5</option>
-             <option value="6">6</option>
+             <option value="6">6+</option>
            </select>
            <br>
            <label for="fav_lang" id=""></label>
-           <input type="text" name="fav_lang" placeholder="expertise..."size="40">
+           <input type="text" name="fav_lang" placeholder="what's your background?.. "size="40">
            <br>
            <label for="about"></label>
            <textarea type="text" name="about" id="" placeholder="feedback... "rows="4"cols="50" ></textarea>
