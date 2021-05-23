@@ -3,7 +3,7 @@ Digital Resume for JS/Rails Mod
 
 Welcome to my "Digital Portfolio"
 
-It is my hope that this program will be able to display some of my accomplishments in regards to programming and using specific programming languages.
+This program will display some of my accomplishments in regards to programming and using specific programming languages.
 
 After forking and cloning "https://github.com/303dog/digital_resume.git" into your local environment you will need to CD into $/digital_resume-backend and start the rails server by typing "$/rails s" in your terminal. Next, you will need to open the file 'index.html' for the live preview which differs depending on your set-up. Note: it may be necessary to run '$/rails db:migrate' followed by '$/rails db:seed' to sync and load data the first time you run this program.
 
