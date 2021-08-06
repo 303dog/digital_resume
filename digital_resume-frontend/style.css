@@ -1,13 +1,18 @@
 body {
-  background-color: rgb(203, 232, 243);
+  background-color: rgb(32, 35, 36);
   box-sizing: border-box;
   margin-left: 1%;
   margin-right: 6%;
 }
 
+h1, h2 {
+  color: white;
+}
+
 div.pro-data {
+  z-index: 1;
   background-image: url('./src/Comic-book-background-png-715x715.png');
-  background-color: #cccccc; /* Used if the image is unavailable */
+  background-color: rgb(203, 232, 243); /* Used if the image is unavailable */
   height: 500px; /* You must set a specified height */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
@@ -38,30 +43,31 @@ h1, h2, h3, h4, h5, p {
 }
 
 .cert {
-  width: 10vmax;
-  height: 35%;
+  width: 16vmax;
+  height: 12.5vmax;
   border: 2px solid black;
   border-radius: 10%;
-  position: sticky;
+  position: absolute;
   box-sizing: border-box;
   top: 15%;
   margin-right: 1vw;
   margin-left: .25vw;
-  margin-top: 11.5vmax;
 }
 
 a:hover {
-  background-color: rgb(10, 250, 230);
- 
+  background-color: rgb(122, 145, 145);
+  font-size: 20px;
+  color: white;
 }
 
 div.comments {
+  position: relative;
+  z-index: 2;
   background-color: rgb(218, 252, 218);
-  margin: 1%;
   margin-left:30%;
   margin-right: 30%;
   margin-top: 1%;
-  margin-bottom: 1%;
+  margin-bottom: 5%;
   padding-top: 1%;
   padding-bottom: 1%;
   text-align: center;
@@ -70,7 +76,7 @@ div.comments {
 }
 
 label {
-  display: block;
+  display: inline-block;
 }
 
 input[type='text'], textarea {
@@ -105,8 +111,11 @@ div.feedback {
  
 }
 
+
+
 div.pro-data {
-  margin: 1%;
+  margin-top: 1%;
+  margin-bottom: 1%;
   margin-right: 1%;
   padding-top: 3%;
   padding-right: 2%;

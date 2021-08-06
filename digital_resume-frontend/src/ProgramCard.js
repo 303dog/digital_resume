@@ -65,10 +65,16 @@ class ProgramCard {
       }
       if (event.target.className === "toggle-comment") {
         const id = event.target.dataset.id;
-        confirm("Scroll up to complete the comment form.");
-        new ComForm(id);
+        setTimeout(function(){ new ComForm(id), location.href='#'; }, 500);
       }
   };
+
+  clearCurrentCom() {
+    const container = document.getElementById(
+      `project-comments`
+    );
+    container.innerHTML = "";
+  }
 
   renderProgram() {
     const card = document.createElement("container");
@@ -99,15 +105,17 @@ class ProgramCard {
           <h3><u>${title}</u></h3>
           <h4><em>${about}</em></h4>
           <div class="stats">
-          <h5>Code focus: <em>${focus}</em></h5>
-          <h5>Library | Framework: <em>${program_lang}</em></h5>
+          <h5>Focus: <em>${focus}</em></h5>
+          <h5>Technology: <em>${program_lang}</em></h5>
           <a onclick="window.open('${demo}', '_blank', 'location=yes,height=400,width=520,status=yes');">Demo Video</a>
           <p></p>
           <a onclick="window.open('${repo}', '_blank', 'location=yes,height=400,width=520,status=yes');">GitHub Repository</a>
-          <p><button class="current-comment" data-id=${id}>View existing feedback </button></p>
-          <p><button class="toggle-comment" data-id=${id}>Leave Feedback</button></p>
+          <p><button class="current-comment" data-id=${id}>View existing //feedback </button></p>
+          <p><button class="toggle-comment"  data-id=${id}>Click here to open and redirect Me</button></p>
           <div id="project-${id}-comments"></div>
           </div>
           </div>`;
   }
 }
+
+//
